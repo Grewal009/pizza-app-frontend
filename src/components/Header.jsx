@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <>
-      <div className="bg-yellow-200 w-full h-14 flex justify-between px-5 items-center">
+      <div className="bg-yellow-200 w-full h-20 flex justify-between px-5 items-center">
         <img
           src="https://e7.pngegg.com/pngimages/427/304/png-clipart-pizza-sticker-cartoon-drawing-pizza-food-fruit-thumbnail.png"
           className="w-14 h-12"
