@@ -6,8 +6,9 @@ const Body = () => {
       <h1>Body</h1>
       <h1>Search</h1>
       <div className="flex flex-wrap justify-center gap-5">
-        <Item /> <Item /> <Item /> <Item /> <Item /> <Item /> <Item /> <Item />{" "}
-        <Item /> <Item /> <Item /> <Item />
+        <Item itemName="Heavy Heaven" itemPrice="328" />
+        <Item itemName="Kebabpizza" itemPrice="328" />
+        <Item itemName="Thai Chicken" itemPrice="340" />
       </div>
     </div>
   );
