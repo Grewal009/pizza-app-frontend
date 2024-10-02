@@ -23,8 +23,6 @@ const Body = () => {
 
   return (
     <div className="w-full h-[800px] p-2">
-      <h1>Body</h1>
-      <h1>Search</h1>
       <div className="flex justify-center gap-5 mb-5">
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"
@@ -51,6 +49,15 @@ const Body = () => {
           }}
         >
           Show All
+        </button>
+      </div>
+      <div className="flex justify-center mb-5 gap-3">
+        <input
+          className="w-72  border-2 pl-4 text-lg rounded-lg text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-4 focus:ring-transparent focus:ring-gray-300 outline-4 outline-slate-300"
+          placeholder="search..."
+        />
+        <button className="w-20 h-10 -ml-[92px] bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold hover:bg-gray-300">
+          🔍
         </button>
       </div>
 
