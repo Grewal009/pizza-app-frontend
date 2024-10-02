@@ -1,11 +1,9 @@
+import { LOGO_URL } from "../utils/constants.js";
 const Header = () => {
   return (
     <>
       <div className="bg-yellow-200 w-full h-20 flex justify-between px-5 items-center">
-        <img
-          src="https://e7.pngegg.com/pngimages/427/304/png-clipart-pizza-sticker-cartoon-drawing-pizza-food-fruit-thumbnail.png"
-          className="w-14 h-12"
-        />
+        <img src={LOGO_URL} className="w-14 h-12" />
         <ul className="flex items-center gap-5 text-2xl font-bold text-orange-700">
           <li className="cursor-pointer">Home</li>
           <li className="cursor-pointer">About</li>
