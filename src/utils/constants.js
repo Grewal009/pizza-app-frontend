@@ -57,3 +57,9 @@ export let items = [
     glutenFree: true,
   },
 ];
+
+export let userLogin = {
+  name: null,
+  id: null,
+  login: false,
+};
