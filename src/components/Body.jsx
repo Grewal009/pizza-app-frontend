@@ -1,9 +1,25 @@
 import Item from "./Item";
 import { items } from "../utils/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [pizzaItems, setPizzaItems] = useState(items);
+  const [pizzaItems, setPizzaItems] = useState([]);
+
+  useEffect(() => {
+    console.log("useEffect called");
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://official-joke-api.appspot.com/random_joke"
+    );
+    const json = await data.json();
+    console.log(json);
+    //update state variable here
+    setPizzaItems(items);
+  };
 
   return (
     <div className="w-full h-[800px] p-2">
@@ -38,11 +54,15 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5">
-        {pizzaItems.map((pizza) => (
-          <Item {...pizza} key={pizza.id} />
-        ))}
-      </div>
+      {pizzaItems.length == 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="flex flex-wrap justify-center gap-5">
+          {pizzaItems.map((pizza) => (
+            <Item {...pizza} key={pizza.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
