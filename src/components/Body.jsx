@@ -1,5 +1,5 @@
 import Item from "./Item";
-import { items } from "../utils/constants";
+//import { items } from "../utils/constants";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
@@ -16,14 +16,12 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://official-joke-api.appspot.com/random_joke"
-    );
+    const data = await fetch("http://localhost:5190/pizzas.no/");
     const json = await data.json();
     console.log(json);
     //update state variable here
-    setPizzaItems(items);
-    setFilteredPizza(items);
+    setPizzaItems(json);
+    setFilteredPizza(json);
   };
 
   return (
@@ -32,7 +30,9 @@ const Body = () => {
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"
           onClick={() => {
-            const filteredItems = items.filter((i) => i.vegetarian == true);
+            const filteredItems = pizzaItems.filter(
+              (i) => i.vegetarian == true
+            );
             setFilteredPizza(filteredItems);
           }}
         >
@@ -41,7 +41,9 @@ const Body = () => {
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
           onClick={() => {
-            const filteredItems = items.filter((i) => i.glutenFree == true);
+            const filteredItems = pizzaItems.filter(
+              (i) => i.glutenFree == true
+            );
             setFilteredPizza(filteredItems);
           }}
         >
@@ -50,7 +52,7 @@ const Body = () => {
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
           onClick={() => {
-            setFilteredPizza(items);
+            setFilteredPizza(pizzaItems);
           }}
         >
           Show All
