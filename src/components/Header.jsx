@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LOGO_URL } from "../utils/constants.js";
 import { userLogin } from "../utils/constants.js";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [login, setLogin] = useState(userLogin.login);
@@ -10,11 +11,19 @@ const Header = () => {
     <>
       <div className="bg-yellow-200 w-full h-20 flex justify-between px-5 items-center">
         <img src={LOGO_URL} className="w-14 h-12" />
-        <ul className="flex items-center gap-5 text-2xl font-bold text-orange-700">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Contact</li>
-          <li className="cursor-pointer">Cart</li>
+        <ul className="flex items-center text-2xl font-bold text-orange-700">
+          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/cart">Cart</Link>
+          </li>
         </ul>
         <div className="flex">
           {login ? (
@@ -25,7 +34,7 @@ const Header = () => {
                 userLogin.login = !login;
               }}
             >
-              Logout
+              <Link to="/">Logout</Link>
             </button>
           ) : (
             <button
@@ -35,7 +44,7 @@ const Header = () => {
                 userLogin.login = !login;
               }}
             >
-              Login
+              <Link to="/">Login</Link>
             </button>
           )}
         </div>

@@ -25,8 +25,8 @@ const Body = () => {
   };
 
   return (
-    <div className="w-full h-[800px] p-2">
-      <div className="flex justify-center gap-5 mb-5">
+    <div className="w-full h-[800px] px-2">
+      <div className="flex justify-center gap-5 py-5">
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"
           onClick={() => {
