@@ -44,7 +44,7 @@ const Header = () => {
                 userLogin.login = !login;
               }}
             >
-              <Link to="/">Login</Link>
+              <Link to="/login">Login</Link>
             </button>
           )}
         </div>

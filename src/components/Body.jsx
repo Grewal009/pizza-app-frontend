@@ -22,10 +22,12 @@ const Body = () => {
     //update state variable here
     setPizzaItems(json);
     setFilteredPizza(json);
+    //  setPizzaItems(items);
+    //  setFilteredPizza(items);
   };
 
   return (
-    <div className="w-full h-[800px] px-2">
+    <div className="w-full h-[580px] p-2">
       <div className="flex justify-center gap-5 py-5">
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"
@@ -60,7 +62,7 @@ const Body = () => {
       </div>
 
       {/* filter items based on search text */}
-      <div className="flex justify-center mb-5 gap-3">
+      <div className="flex justify-center mb-10 gap-3">
         <input
           type="text"
           value={searchText}
@@ -86,7 +88,7 @@ const Body = () => {
       {pizzaItems.length == 0 ? (
         <Shimmer />
       ) : (
-        <div className="flex flex-wrap justify-center gap-5">
+        <div className="flex flex-wrap justify-center gap-6">
           {filteredPizza.map((pizza) => (
             <Item {...pizza} key={pizza.id} />
           ))}

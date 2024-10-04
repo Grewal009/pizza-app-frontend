@@ -5,10 +5,12 @@ const Error = () => {
   const { status, statusText } = error;
 
   return (
-    <div className="w-full h-[800px] px-2">
-      <h2>Oops!!!</h2>
-      <h2>Something went wrong!!!</h2>
-      <h2>
+    <div className="w-full h-[580px] px-2">
+      <h2 className="font-bold text-xl text-gray-700">Oops!!!</h2>
+      <h2 className="font-bold text-xl text-gray-700">
+        Something went wrong!!!
+      </h2>
+      <h2 className="font-bold text-xl text-gray-700">
         {status}: {statusText}
       </h2>
     </div>
