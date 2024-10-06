@@ -26,6 +26,13 @@ const Body = () => {
     //  setFilteredPizza(items);
   };
 
+  //method to use items from constants
+  /*  const fetchData = () => {
+    //update state variable here
+    setPizzaItems(items);
+    setFilteredPizza(items);
+  }; */
+
   return (
     <div className="w-full h-[580px] p-2">
       <div className="flex justify-center gap-5 py-5">
