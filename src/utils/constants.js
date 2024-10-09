@@ -105,7 +105,7 @@ export let items = [
     allergens: "Soya, Milk",
     regularPrice: 160,
     largePrice: 340,
-    vegetarian: true,
+    vegetarian: false,
     glutenFree: true,
   },
 ];
