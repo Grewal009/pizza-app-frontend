@@ -2,6 +2,7 @@ import Item from "./Item";
 import { items } from "../utils/constants";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [pizzaItems, setPizzaItems] = useState([]);
@@ -32,6 +33,16 @@ const Body = () => {
     setPizzaItems(items);
     setFilteredPizza(items);
   };
+
+  //user of custom hook useOnlineStatus
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return (
+      <div className="w-full h-[580px] p-2 text-center">
+        <h1>You are offline!!! Please check your internet connection.</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-[580px] p-2">

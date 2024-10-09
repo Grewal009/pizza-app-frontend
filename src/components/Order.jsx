@@ -8,6 +8,7 @@ const Order = () => {
   const { id } = useParams();
   console.log(id);
 
+  //using custom hook
   const menu = usePizzaMenu(id);
 
   /*  useEffect(() => {
