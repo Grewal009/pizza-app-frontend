@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { items } from "../utils/constants";
 const Order = () => {
   const [item, setItem] = useState(null);
   const { id } = useParams();
@@ -13,11 +14,15 @@ const Order = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  /*  const fetchData = async () => {
     const data = await fetch("http://localhost:5190/pizzas.no/" + id);
     const json = await data.json();
     console.log(json);
     setItem(json);
+  }; */
+
+  const fetchData = () => {
+    setItem(items?.[id - 1]);
   };
   if (item == null) {
     return;

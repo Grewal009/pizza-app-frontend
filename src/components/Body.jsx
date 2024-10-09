@@ -1,5 +1,5 @@
 import Item from "./Item";
-//import { items } from "../utils/constants";
+import { items } from "../utils/constants";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
@@ -15,7 +15,7 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
+  /*   const fetchData = async () => {
     const data = await fetch("http://localhost:5190/pizzas.no/");
     const json = await data.json();
     console.log(json);
@@ -24,14 +24,14 @@ const Body = () => {
     setFilteredPizza(json);
     //  setPizzaItems(items);
     //  setFilteredPizza(items);
-  };
+  }; */
 
   //method to use items from constants
-  /*  const fetchData = () => {
+  const fetchData = () => {
     //update state variable here
     setPizzaItems(items);
     setFilteredPizza(items);
-  }; */
+  };
 
   return (
     <div className="w-full h-[580px] p-2">
