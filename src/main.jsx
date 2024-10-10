@@ -2,13 +2,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+
 import Error from "./components/Error.jsx";
 import Body from "./components/Body.jsx";
 import Cart from "./components/Cart.jsx";
 import Login from "./components/Login.jsx";
 import Order from "./components/Order.jsx";
+import { lazy, Suspense } from "react";
+import Shimmer from "./components/Shimmer.jsx";
+
+const About = lazy(() => import("./components/About.jsx"));
+const Contact = lazy(() => import("./components/Contact.jsx"));
 
 const appRouter = createBrowserRouter([
   {
@@ -22,11 +26,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
