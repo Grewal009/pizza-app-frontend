@@ -10,10 +10,24 @@ export let items = [
     ingredients:
       "Pepperoni, garlic-spiced meatballs, marinated beef, red onion and oregano.",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 100,
-    largePrice: 310,
-    vegetarian: false,
-    glutenFree: false,
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 2,
@@ -21,10 +35,24 @@ export let items = [
     image: "https://www.peppes.no/bilder_webshop/0119.jpg",
     ingredients: "Marinated chicken, corn, leek and red pepper.",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 110,
-    largePrice: 298,
-    vegetarian: false,
-    glutenFree: false,
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 3,
@@ -33,10 +61,24 @@ export let items = [
     ingredients:
       "Avocado, red onion, marinated aromatic mushrooms, olives, cherry tomatoes and kale mix. The cheese has been replaced with a tasty vegan aioli. Topped with freshly ground pepper and lime zest.",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 115,
-    largePrice: 310,
-    vegetarian: true,
-    glutenFree: false,
+    isvegetarian: true,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 4,
@@ -45,10 +87,24 @@ export let items = [
     ingredients:
       "Avocado, red onion, marinated aromatic mushrooms, olives, cherry tomatoes, kale mix, fresh mozzarella and Peppe's cheese mixture. Topped with freshly ground pepper and lime zest.",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 110,
-    largePrice: 310,
-    vegetarian: true,
-    glutenFree: false,
+    isvegetarian: true,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 5,
@@ -56,10 +112,24 @@ export let items = [
     image: "https://www.peppes.no/bilder_webshop/0319.jpg",
     ingredients: "Marinated chicken, corn, leek and red pepper.",
     allergens: "Soya, Milk",
-    regularPrice: 115,
-    largePrice: 350,
-    vegetarian: false,
-    glutenFree: true,
+    isvegetarian: false,
+    isglutenFree: true,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
 
   {
@@ -68,10 +138,24 @@ export let items = [
     image: "https://www.peppes.no/bilder_webshop/0191.jpg",
     ingredients: "Pepperoni and oregano.",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 148,
-    largePrice: 300,
-    vegetarian: false,
-    glutenFree: false,
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 7,
@@ -80,10 +164,24 @@ export let items = [
     ingredients:
       "Avocado, red onion, marinated aromatic mushrooms, olives, cherry tomatoes and cheese are in place!",
     allergens: "Wheat, Gluten, Milk",
-    regularPrice: 125,
-    largePrice: 360,
-    vegetarian: true,
-    glutenFree: false,
+    isvegetarian: true,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 8,
@@ -92,10 +190,24 @@ export let items = [
     ingredients:
       "Avocado, red onion, marinated aromatic mushrooms, olives, cherry tomatoes and kale mix. The cheese has been replaced with a tasty vegan aioli. Topped with freshly ground pepper and lime zest.",
     allergens: "Soya, Mustard",
-    regularPrice: 160,
-    largePrice: 340,
-    vegetarian: true,
-    glutenFree: true,
+    isvegetarian: true,
+    isglutenFree: true,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
   {
     id: 9,
@@ -103,10 +215,24 @@ export let items = [
     image: "https://www.peppes.no/bilder_webshop/0336.jpg",
     ingredients: "Marinated chicken, bacon, pepperoni, tomato and oregano.",
     allergens: "Soya, Milk",
-    regularPrice: 160,
-    largePrice: 340,
-    vegetarian: false,
-    glutenFree: true,
+    isvegetarian: false,
+    isglutenFree: true,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
   },
 ];
 
