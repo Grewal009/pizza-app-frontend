@@ -1,15 +1,25 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
 import { useParams } from "react-router-dom";
 import usePizzaMenu from "../utils/usePizzaMenu";
+import { useState } from "react";
+import { od } from "../utils/constants";
 
 const Order = () => {
   const { id } = useParams();
   console.log(id);
+  const [size, setSize] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  const [order, setOrder] = useState(od);
+
+  //console.log(size);
 
   //using custom hook
   const menu = usePizzaMenu(id);
+  //console.log(menu);
 
   /*  useEffect(() => {
     console.log("useEffect called");
@@ -22,6 +32,29 @@ const Order = () => {
     console.log(json);
     setItem(json);
   }; */
+
+  const plus = () => {
+    setQuantity(quantity + 1);
+  };
+  const minus = () => {
+    if (quantity == 0) {
+      setQuantity(0);
+      return;
+    }
+    setQuantity(quantity - 1);
+  };
+
+  const addTocart = () => {
+    if (size == "" || quantity == 0) {
+      return;
+    }
+    const res = menu.menus.filter((m) => m.size == size);
+    console.log("log: ", res);
+    od.push({ item: menu, s: size, q: quantity, p: res[0].price });
+    setOrder(od);
+    console.log("order: ", order);
+    setQuantity(0);
+  };
 
   if (menu == null) {
     return;
@@ -48,6 +81,48 @@ const Order = () => {
               <b>allergens:</b>
             </p>
             <p>{menu.allergens}</p>
+          </div>
+
+          <div className="flex justify-between">
+            <div>
+              <label className="w-auto">Select your pizza</label>
+              <select
+                onChange={(e) => {
+                  setSize(e.target.value);
+                  setQuantity(0);
+                }}
+                className="mx-5 w-40"
+              >
+                <option value="">select any</option>
+                {menu.menus.map((m, index) => (
+                  <option key={index} value={m.size}>
+                    {m.size} {m.price} kr
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex">
+              <button
+                onClick={minus}
+                className="mx-5 w-10 font-bold bg-gray-400"
+              >
+                -
+              </button>
+              <label className="w-20 bg-slate-200 text-center">
+                {quantity}
+              </label>
+              <button
+                onClick={plus}
+                className="mx-5 w-10 font-bold bg-gray-400"
+              >
+                +
+              </button>
+            </div>
+
+            <button onClick={addTocart} className="bg-slate-300">
+              Add to cart
+            </button>
           </div>
         </div>
       </div>
