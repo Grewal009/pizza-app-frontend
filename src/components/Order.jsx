@@ -50,9 +50,27 @@ const Order = () => {
     }
     const res = menu.menus.filter((m) => m.size == size);
     console.log("log: ", res);
-    od.push({ item: menu, s: size, q: quantity, p: res[0].price });
-    setOrder(od);
+
+    const alreadyAdded = od.filter((i) => i.s == size && i.itemId == menu.id);
+    console.log("alreadyAdded: ", alreadyAdded);
+    /* const alreadyAddedOtherItem = od.filter(
+      (i) => i.s == size && i.itemId != menu.id
+    ); */
+    /* if (od.length == 0) {
+      od.push({ itemId: menu.id, s: size, q: quantity, p: res[0].price });
+      setOrder(od);
+    } else */
+
+    if (alreadyAdded.length != 0) {
+      alreadyAdded[0].q += quantity;
+      console.log("log11");
+    } else {
+      od.push({ itemId: menu.id, s: size, q: quantity, p: res[0].price });
+      setOrder(od);
+    }
+
     console.log("order: ", order);
+    console.log("menu: ", menu);
     setQuantity(0);
   };
 
