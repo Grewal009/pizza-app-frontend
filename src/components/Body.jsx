@@ -51,7 +51,7 @@ const Body = () => {
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"
           onClick={() => {
             const filteredItems = pizzaItems.filter(
-              (i) => i.vegetarian == true
+              (i) => i.isvegetarian == true
             );
             setFilteredPizza(filteredItems);
           }}
@@ -62,13 +62,35 @@ const Body = () => {
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
           onClick={() => {
             const filteredItems = pizzaItems.filter(
-              (i) => i.glutenFree == true
+              (i) => i.isglutenFree == true
             );
             setFilteredPizza(filteredItems);
           }}
         >
           Gluten-free
         </button>
+
+        <button
+          className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
+          onClick={() => {
+            const filteredItems = pizzaItems.filter(
+              (i) => i.isdressing == true
+            );
+            setFilteredPizza(filteredItems);
+          }}
+        >
+          Dressing
+        </button>
+        <button
+          className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
+          onClick={() => {
+            const filteredItems = pizzaItems.filter((i) => i.isdrink == true);
+            setFilteredPizza(filteredItems);
+          }}
+        >
+          Drink
+        </button>
+
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium hover:font-bold"
           onClick={() => {
