@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [login, setLogin] = useState(userLogin.login);
+
   console.log(userLogin);
   console.log(login);
+
   return (
     <>
       <div className="bg-yellow-200 w-full h-20 flex justify-between px-5 items-center">
@@ -21,8 +23,13 @@ const Header = () => {
           <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
-            <Link to="/cart">Cart</Link>
+          <li className="flex cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/cart">
+              Cart
+              <label className="ml-1 px-2  bg-orange-700 text-white rounded-xl text-center">
+                {"0"}
+              </label>
+            </Link>
           </li>
         </ul>
         <div className="flex">
