@@ -2,9 +2,12 @@ import { useState } from "react";
 import { LOGO_URL } from "../utils/constants.js";
 import { userLogin } from "../utils/constants.js";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [login, setLogin] = useState(userLogin.login);
+  const cartItems = useSelector((store) => store.cart.itemsadded);
+  console.log("cartItems: ", cartItems);
 
   console.log(userLogin);
   console.log(login);
@@ -27,7 +30,7 @@ const Header = () => {
             <Link to="/cart">
               Cart
               <label className="ml-1 px-2  bg-orange-700 text-white rounded-xl text-center">
-                {"0"}
+                {cartItems.length}
               </label>
             </Link>
           </li>

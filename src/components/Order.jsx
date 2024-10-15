@@ -6,16 +6,17 @@ import { useParams } from "react-router-dom";
 import usePizzaMenu from "../utils/usePizzaMenu";
 import { useState } from "react";
 import { od } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem, updateItem } from "../utils/cartSlice";
+import { useSelector } from "react-redux";
 
 const Order = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((store) => store.cart.itemsadded);
   const { id } = useParams();
   console.log(id);
   const [size, setSize] = useState("");
   const [quantity, setQuantity] = useState(0);
-
-  const [order, setOrder] = useState(od);
-
-  //console.log(size);
 
   //using custom hook
   const menu = usePizzaMenu(id);
@@ -44,6 +45,38 @@ const Order = () => {
     setQuantity(quantity - 1);
   };
 
+  const handleAddItem = () => {
+    if (size == "" || quantity == 0) {
+      return;
+    }
+    const res = menu.menus.filter((m) => m.size == size);
+    console.log("log: ", res);
+    const alreadyAdded = cartItems.filter(
+      (i) => i.s == size && i.itemId == menu.id
+    );
+    console.log("alreadyAdded: ", alreadyAdded);
+    const index = cartItems.indexOf(alreadyAdded[0]);
+    console.log("index: ", index);
+
+    if (index != -1) {
+      console.log("log11");
+
+      dispatch(
+        updateItem({
+          itemId: menu.id,
+          s: size,
+          q: quantity,
+          p: res[0].price,
+        })
+      );
+    } else {
+      dispatch(
+        addItem({ itemId: menu.id, s: size, q: quantity, p: res[0].price })
+      );
+    }
+    setQuantity(0);
+  };
+
   const addTocart = () => {
     if (size == "" || quantity == 0) {
       return;
@@ -66,10 +99,10 @@ const Order = () => {
       console.log("log11");
     } else {
       od.push({ itemId: menu.id, s: size, q: quantity, p: res[0].price });
-      setOrder(od);
+      //setOrder(od);
     }
 
-    console.log("order: ", order);
+    //console.log("order: ", order);
     console.log("menu: ", menu);
     setQuantity(0);
   };
@@ -138,7 +171,7 @@ const Order = () => {
               </button>
             </div>
 
-            <button onClick={addTocart} className="bg-slate-300">
+            <button onClick={handleAddItem} className="bg-slate-300">
               Add to cart
             </button>
           </div>
