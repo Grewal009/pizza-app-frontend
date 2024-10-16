@@ -11,7 +11,9 @@ const cartSlice = createSlice({
       state.itemsadded.push(action.payload);
     },
     removeItem: (state, action) => {
-      state.itemsadded.pop();
+      state.itemsadded.splice(action.payload, 1);
+
+      //state.itemsadded.pop();
     },
     updateItem: (state, action) => {
       const { itemId, s, q, p } = action.payload;

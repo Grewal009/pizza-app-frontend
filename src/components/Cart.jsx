@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import ItemLayout from "./ItemLayout";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
+  const totalAmount = cartItems.reduce((acc, cur) => cur.p * cur.q + acc, 0);
   return (
     <div className="w-full h-[580px] px-2">
       <div className="w-auto flex justify-center my-10">
@@ -28,15 +29,17 @@ const Cart = () => {
           </thead>
           <tbody>
             {cartItems.map((i, index) => (
-              <ItemLayout {...i} key={index} />
+              <CartItem {...i} key={index} />
             ))}
           </tbody>
           <tfoot className="hover:bg-gray-50">
             <tr>
               <td className="border px-8 py-4" colSpan={4}>
-                Total amount to paid:
+                Total amount to be paid:
               </td>
-              <td className="border px-8 py-4">72183</td>
+              <td className="border px-8 py-4" colSpan={2}>
+                {totalAmount}
+              </td>
             </tr>
           </tfoot>
         </table>
