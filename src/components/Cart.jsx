@@ -9,10 +9,8 @@ const Cart = () => {
       <div className="w-auto flex justify-center my-10">
         <table className="shadow-lg bg-white border-collapse text-center">
           <thead>
-            <tr>
-              <th className="bg-slate-200 border text-left px-8 py-4">
-                ITEM ID
-              </th>
+            <tr className="">
+              <th className="bg-slate-200 border text-left px-8 py-4">ITEM</th>
               <th className="bg-slate-200 border text-left px-8 py-4">SIZE</th>
 
               <th className="bg-slate-200 border text-left px-8 py-4">
@@ -35,10 +33,10 @@ const Cart = () => {
           <tfoot className="hover:bg-gray-50">
             <tr>
               <td className="border px-8 py-4" colSpan={4}>
-                Total amount to be paid:
+                <b>Total amount to be paid:</b>
               </td>
               <td className="border px-8 py-4" colSpan={2}>
-                {totalAmount}
+                <b>{totalAmount} NOK</b>
               </td>
             </tr>
           </tfoot>

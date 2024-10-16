@@ -2,11 +2,17 @@ import { MdDelete } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../utils/cartSlice";
+import { items } from "../utils/constants";
 
 const CartItem = (prop) => {
   const { itemId, s, q, p } = prop;
   const orderItems = useSelector((store) => store.cart.itemsadded);
   const filterItem = orderItems.filter((i) => i.itemId == itemId && i.s == s);
+
+  console.log("filterItem: ", filterItem[0]?.itemId);
+  const itemInfo = items.filter((i) => i.id == filterItem[0]?.itemId);
+  console.log("itemInfo: ", itemInfo[0].name);
+
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
@@ -15,8 +21,8 @@ const CartItem = (prop) => {
 
   return (
     <tr className="hover:bg-gray-50">
-      <td className="border px-8 py-4">{itemId}</td>
-      <td className="border px-8 py-4">{s}</td>
+      <td className="border px-8 py-4 text-left">{itemInfo[0].name}</td>
+      <td className="border px-8 py-4 text-left">{s}</td>
 
       <td className="border px-8 py-4">{p}</td>
       <td className="border px-8 py-4">{q}</td>
