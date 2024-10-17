@@ -38,14 +38,14 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
     return (
-      <div className="w-full h-[580px] p-2 text-center">
+      <div className="w-full p-2 text-center">
         <h1>You are offline!!! Please check your internet connection.</h1>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-[580px] p-2">
+    <div className="w-full  p-2">
       <div className="flex justify-center gap-5 py-5">
         <button
           className="w-32 h-10 bg-slate-300 rounded-lg text-lg cursor-pointer font-medium  hover:font-bold"

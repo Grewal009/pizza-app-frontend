@@ -7,11 +7,15 @@ import appStore from "./utils/appStore.js";
 const App = () => {
   return (
     <>
-      <Provider store={appStore}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </Provider>
+      <div className="flex flex-col min-h-screen">
+        <Provider store={appStore}>
+          <Header />
+          <div className="flex-grow">
+            <Outlet />
+          </div>
+          <Footer />
+        </Provider>
+      </div>
     </>
   );
 };

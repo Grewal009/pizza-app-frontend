@@ -112,7 +112,7 @@ const Order = () => {
   }
 
   return (
-    <div className="w-full h-[580px] p-2">
+    <div className="w-full  p-2">
       <div className="p-5 flex justify-start gap-5">
         <img
           src={menu.image}

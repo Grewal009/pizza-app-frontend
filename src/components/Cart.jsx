@@ -22,7 +22,7 @@ const Cart = () => {
     );
   }
   return (
-    <div className="w-full h-[580px] px-2">
+    <div className="w-full px-2">
       <div className="w-auto flex justify-center my-10">
         <table className="shadow-lg bg-white border-collapse text-center">
           <thead>
