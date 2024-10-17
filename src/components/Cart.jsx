@@ -1,9 +1,19 @@
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
+import emptycart from "../assets/emptycart.png";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
   const totalAmount = cartItems.reduce((acc, cur) => cur.p * cur.q + acc, 0);
+
+  if (cartItems.length == 0) {
+    return (
+      <div className="flex justify-center items-center flex-col my-10">
+        <h3 className="text-xl text-gray-500 font-bold">Your cart is empty</h3>
+        <img src={emptycart} className="w-1/3" />
+      </div>
+    );
+  }
   return (
     <div className="w-full h-[580px] px-2">
       <div className="w-auto flex justify-center my-10">
@@ -41,6 +51,14 @@ const Cart = () => {
             </tr>
           </tfoot>
         </table>
+      </div>
+      <div className="flex justify-center gap-5">
+        <button className="w-32 h-10  bg-red-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-red-700 hover:font-bold shadow-inner ">
+          Clear Cart
+        </button>
+        <button className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold">
+          Send Order
+        </button>
       </div>
     </div>
   );
