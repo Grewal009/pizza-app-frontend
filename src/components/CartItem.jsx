@@ -1,7 +1,11 @@
 import { MdDelete } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { removeItem } from "../utils/cartSlice";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeItem,
+} from "../utils/cartSlice";
 import { items } from "../utils/constants";
 
 const CartItem = (prop) => {
@@ -19,13 +23,33 @@ const CartItem = (prop) => {
     dispatch(removeItem(filterItem[0]));
   };
 
+  const minusHandler = () => {
+    dispatch(decreaseQuantity(filterItem[0]));
+  };
+  const plusHandler = () => {
+    dispatch(increaseQuantity(filterItem[0]));
+  };
+
   return (
     <tr className="hover:bg-gray-50">
       <td className="border px-8 py-4 text-left">{itemInfo[0].name}</td>
       <td className="border px-8 py-4 text-left">{s}</td>
 
       <td className="border px-8 py-4">{p}</td>
-      <td className="border px-8 py-4">{q}</td>
+      <td className="border px-8 py-4">
+        <div className="flex">
+          <button
+            onClick={minusHandler}
+            className=" w-10 font-bold bg-gray-400"
+          >
+            -
+          </button>
+          <label className="w-16 bg-slate-200 text-center">{q}</label>
+          <button onClick={plusHandler} className=" w-10 font-bold bg-gray-400">
+            +
+          </button>
+        </div>
+      </td>
       <td className="border px-8 py-4">{p * q}</td>
       <td className="border px-8 py-4">
         <MdDelete

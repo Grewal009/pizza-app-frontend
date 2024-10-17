@@ -16,7 +16,7 @@ const Cart = () => {
               <th className="bg-slate-200 border text-left px-8 py-4">
                 PRICE PER PIECE
               </th>
-              <th className="bg-slate-200 border text-left px-8 py-4">
+              <th className="bg-slate-200 border text-center px-8 py-4">
                 QUANTITY
               </th>
               <th className="bg-slate-200 border text-left px-8 py-4">
