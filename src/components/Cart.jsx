@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import { addOrder } from "../utils/orderSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
   const totalAmount = cartItems.reduce((acc, cur) => cur.p * cur.q + acc, 0);
@@ -12,11 +13,53 @@ const Cart = () => {
   const orderdetails = useSelector((store) => store.order.orderItems);
   console.log("orderdetails: ", orderdetails);
 
+  const [newOrder] = useState({
+    customerId: 1011, // Example customer ID
+    orderDateTime: new Date().toISOString(),
+
+    totalAmount: totalAmount,
+    paymentStatus: "Paid",
+    deliveryStatus: "Pending",
+    orderDetails: [
+      {
+        itemId: 1,
+        size: "M",
+        quantity: 2,
+        pricePerPiece: 50.0,
+      },
+      {
+        itemId: 1,
+        size: "L",
+        quantity: 1,
+        pricePerPiece: 100.0,
+      },
+    ],
+  });
+
   const clearCartHandler = () => {
     dispatch(clearCart());
   };
 
-  const orderHandler = () => {
+  const orderHandler = async () => {
+    //order request to api
+    try {
+      const response = await fetch("http://localhost:5122/pizzas/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newOrder),
+      });
+
+      if (response.ok) {
+        const data1 = await response.json();
+        console.log("Order created successfully: ", data1);
+      } else {
+        const errorData1 = await response.json();
+        console.error("Error => create order: ", errorData1);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+
     dispatch(addOrder(cartItems));
     dispatch(clearCart());
   };
