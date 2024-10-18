@@ -8,6 +8,10 @@ const Header = () => {
   const [login, setLogin] = useState(userLogin.login);
   const cartItems = useSelector((store) => store.cart.itemsadded);
   console.log("cartItems: ", cartItems);
+  let totalQuantity = 0;
+  if (cartItems) {
+    totalQuantity = cartItems.reduce((acc, cur) => acc + cur.q, 0);
+  }
 
   console.log(userLogin);
   console.log(login);
@@ -30,7 +34,7 @@ const Header = () => {
             <Link to="/cart">
               Cart
               <label className="ml-1 px-2 bg-orange-700 text-white rounded-xl text-center">
-                {cartItems.length}
+                {totalQuantity}
               </label>
             </Link>
           </li>
