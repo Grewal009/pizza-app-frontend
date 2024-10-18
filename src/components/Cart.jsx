@@ -3,13 +3,21 @@ import CartItem from "./CartItem";
 import emptycart from "../assets/emptycart.png";
 import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
-
+import { addOrder } from "../utils/orderSlice";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
   const totalAmount = cartItems.reduce((acc, cur) => cur.p * cur.q + acc, 0);
   const dispatch = useDispatch();
+  const orderdetails = useSelector((store) => store.order.orderItems);
+  console.log("orderdetails: ", orderdetails);
 
   const clearCartHandler = () => {
+    dispatch(clearCart());
+  };
+
+  const orderHandler = () => {
+    dispatch(addOrder(cartItems));
     dispatch(clearCart());
   };
 
@@ -66,8 +74,11 @@ const Cart = () => {
         >
           Clear Cart
         </button>
-        <button className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold">
-          Send Order
+        <button
+          onClick={orderHandler}
+          className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
+        >
+          <Link to="/orderdetails">Send Order</Link>
         </button>
       </div>
     </div>

@@ -29,10 +29,14 @@ const Header = () => {
           <li className="flex cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
             <Link to="/cart">
               Cart
-              <label className="ml-1 px-2  bg-orange-700 text-white rounded-xl text-center">
+              <label className="ml-1 px-2 bg-orange-700 text-white rounded-xl text-center">
                 {cartItems.length}
               </label>
             </Link>
+          </li>
+
+          <li className="flex cursor-pointer w-44 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <Link to="/orderdetails">Order Details</Link>
           </li>
         </ul>
         <div className="flex">
