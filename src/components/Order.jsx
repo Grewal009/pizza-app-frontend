@@ -15,8 +15,8 @@ const Order = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
   const { id } = useParams();
   console.log(id);
-  const [size, setSize] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [size1, setSize1] = useState("");
+  const [quantity1, setQuantity1] = useState(0);
 
   //using custom hook
   const menu = usePizzaMenu(id);
@@ -35,24 +35,24 @@ const Order = () => {
   }; */
 
   const plus = () => {
-    setQuantity(quantity + 1);
+    setQuantity1(quantity1 + 1);
   };
   const minus = () => {
-    if (quantity == 0) {
-      setQuantity(0);
+    if (quantity1 == 0) {
+      setQuantity1(0);
       return;
     }
-    setQuantity(quantity - 1);
+    setQuantity1(quantity1 - 1);
   };
 
   const handleAddItem = () => {
-    if (size == "" || quantity == 0) {
+    if (size1 == "" || quantity1 == 0) {
       return;
     }
-    const res = menu.menus.filter((m) => m.size == size);
+    const res = menu.menus.filter((m) => m.size == size1);
     console.log("log: ", res);
     const alreadyAdded = cartItems.filter(
-      (i) => i.s == size && i.itemId == menu.id
+      (i) => i.s == size1 && i.itemId == menu.id
     );
     console.log("alreadyAdded: ", alreadyAdded);
     const index = cartItems.indexOf(alreadyAdded[0]);
@@ -64,27 +64,32 @@ const Order = () => {
       dispatch(
         updateItem({
           itemId: menu.id,
-          s: size,
-          q: quantity,
-          p: res[0].price,
+          size: size1,
+          quantity: quantity1,
+          pricePerPiece: res[0].price,
         })
       );
     } else {
       dispatch(
-        addItem({ itemId: menu.id, s: size, q: quantity, p: res[0].price })
+        addItem({
+          itemId: menu.id,
+          size: size1,
+          quantity: quantity1,
+          pricePerPiece: res[0].price,
+        })
       );
     }
-    setQuantity(0);
+    setQuantity1(0);
   };
 
   const addTocart = () => {
-    if (size == "" || quantity == 0) {
+    if (size1 == "" || quantity1 == 0) {
       return;
     }
-    const res = menu.menus.filter((m) => m.size == size);
+    const res = menu.menus.filter((m) => m.size == size1);
     console.log("log: ", res);
 
-    const alreadyAdded = od.filter((i) => i.s == size && i.itemId == menu.id);
+    const alreadyAdded = od.filter((i) => i.s == size1 && i.itemId == menu.id);
     console.log("alreadyAdded: ", alreadyAdded);
     /* const alreadyAddedOtherItem = od.filter(
       (i) => i.s == size && i.itemId != menu.id
@@ -95,16 +100,16 @@ const Order = () => {
     } else */
 
     if (alreadyAdded.length != 0) {
-      alreadyAdded[0].q += quantity;
+      alreadyAdded[0].q += quantity1;
       console.log("log11");
     } else {
-      od.push({ itemId: menu.id, s: size, q: quantity, p: res[0].price });
+      od.push({ itemId: menu.id, s: size1, q: quantity1, p: res[0].price });
       //setOrder(od);
     }
 
     //console.log("order: ", order);
     console.log("menu: ", menu);
-    setQuantity(0);
+    setQuantity1(0);
   };
 
   if (menu == null) {
@@ -139,8 +144,8 @@ const Order = () => {
               <label className="w-auto">Select your pizza</label>
               <select
                 onChange={(e) => {
-                  setSize(e.target.value);
-                  setQuantity(0);
+                  setSize1(e.target.value);
+                  setQuantity1(0);
                 }}
                 className="mx-5 w-40"
               >
@@ -161,7 +166,7 @@ const Order = () => {
                 -
               </button>
               <label className="w-20 bg-slate-200 text-center">
-                {quantity}
+                {quantity1}
               </label>
               <button
                 onClick={plus}

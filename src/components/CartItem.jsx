@@ -9,9 +9,11 @@ import {
 import { items } from "../utils/constants";
 
 const CartItem = (prop) => {
-  const { itemId, s, q, p } = prop;
+  const { itemId, size, quantity, pricePerPiece } = prop;
   const orderItems = useSelector((store) => store.cart.itemsadded);
-  const filterItem = orderItems.filter((i) => i.itemId == itemId && i.s == s);
+  const filterItem = orderItems.filter(
+    (i) => i.itemId == itemId && i.size == size
+  );
 
   console.log("filterItem: ", filterItem[0]?.itemId);
   const itemInfo = items.filter((i) => i.id == filterItem[0]?.itemId);
@@ -33,9 +35,9 @@ const CartItem = (prop) => {
   return (
     <tr className="hover:bg-gray-50">
       <td className="border px-8 py-4 text-left">{itemInfo[0].name}</td>
-      <td className="border px-8 py-4 text-left">{s}</td>
+      <td className="border px-8 py-4 text-left">{size}</td>
 
-      <td className="border px-8 py-4">{p}</td>
+      <td className="border px-8 py-4">{pricePerPiece}</td>
       <td className="border px-8 py-4">
         <div className="flex">
           <button
@@ -44,13 +46,13 @@ const CartItem = (prop) => {
           >
             -
           </button>
-          <label className="w-16 bg-slate-200 text-center">{q}</label>
+          <label className="w-16 bg-slate-200 text-center">{quantity}</label>
           <button onClick={plusHandler} className=" w-10 font-bold bg-gray-400">
             +
           </button>
         </div>
       </td>
-      <td className="border px-8 py-4">{p * q}</td>
+      <td className="border px-8 py-4">{pricePerPiece * quantity}</td>
       <td className="border px-8 py-4">
         <MdDelete
           size={20}

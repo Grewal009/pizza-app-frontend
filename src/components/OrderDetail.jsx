@@ -8,7 +8,10 @@ const OrderDetail = () => {
   console.log("order: ", order);
   let totalAmount;
   if (order) {
-    totalAmount = order.reduce((acc, cur) => cur.p * cur.q + acc, 0);
+    totalAmount = order.reduce(
+      (acc, cur) => cur.pricePerPiece * cur.quatity + acc,
+      0
+    );
   }
 
   const orderNumber = 1001;

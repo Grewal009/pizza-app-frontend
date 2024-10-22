@@ -16,33 +16,33 @@ const cartSlice = createSlice({
       //state.itemsadded.pop();
     },
     updateItem: (state, action) => {
-      const { itemId, s, q, p } = action.payload;
+      const { itemId, size, quantity, pricePerPiece } = action.payload;
       const existingItem = state.itemsadded.find(
-        (i) => i.itemId == itemId && i.s == s
+        (i) => i.itemId == itemId && i.size == size
       );
       if (existingItem) {
-        existingItem.q += q;
+        existingItem.quantity += quantity;
       }
     },
     increaseQuantity: (state, action) => {
-      const { itemId, s } = action.payload;
+      const { itemId, size } = action.payload;
       const existingItem = state.itemsadded.find(
-        (i) => i.itemId == itemId && i.s == s
+        (i) => i.itemId == itemId && i.size == size
       );
       if (existingItem) {
-        existingItem.q += 1;
+        existingItem.quantity += 1;
       }
     },
     decreaseQuantity: (state, action) => {
-      const { itemId, s } = action.payload;
+      const { itemId, size } = action.payload;
       const existingItem = state.itemsadded.find(
-        (i) => i.itemId == itemId && i.s == s
+        (i) => i.itemId == itemId && i.size == size
       );
       if (existingItem) {
-        if (existingItem.q == 0) {
+        if (existingItem.quantity == 0) {
           return;
         }
-        existingItem.q -= 1;
+        existingItem.quantity -= 1;
       }
     },
     clearCart: (state, action) => {

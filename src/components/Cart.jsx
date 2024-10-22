@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
-  const totalAmount = cartItems.reduce((acc, cur) => cur.p * cur.q + acc, 0);
+  const totalAmount = cartItems.reduce(
+    (acc, cur) => cur.pricePerPiece * cur.quantity + acc,
+    0
+  );
   const dispatch = useDispatch();
   const orderdetails = useSelector((store) => store.order.orderItems);
   console.log("orderdetails: ", orderdetails);

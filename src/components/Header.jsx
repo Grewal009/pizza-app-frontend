@@ -10,7 +10,7 @@ const Header = () => {
   console.log("cartItems: ", cartItems);
   let totalQuantity = 0;
   if (cartItems) {
-    totalQuantity = cartItems.reduce((acc, cur) => acc + cur.q, 0);
+    totalQuantity = cartItems.reduce((acc, cur) => acc + cur.quantity, 0);
   }
 
   console.log(userLogin);
