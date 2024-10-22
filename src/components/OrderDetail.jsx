@@ -9,7 +9,7 @@ const OrderDetail = () => {
   let totalAmount;
   if (order) {
     totalAmount = order.reduce(
-      (acc, cur) => cur.pricePerPiece * cur.quatity + acc,
+      (acc, cur) => cur.pricePerPiece * cur.quantity + acc,
       0
     );
   }

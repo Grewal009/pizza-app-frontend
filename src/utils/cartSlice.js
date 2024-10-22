@@ -16,7 +16,7 @@ const cartSlice = createSlice({
       //state.itemsadded.pop();
     },
     updateItem: (state, action) => {
-      const { itemId, size, quantity, pricePerPiece } = action.payload;
+      const { itemId, size, quantity, price } = action.payload;
       const existingItem = state.itemsadded.find(
         (i) => i.itemId == itemId && i.size == size
       );

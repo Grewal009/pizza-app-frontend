@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.itemsadded);
+  const cItems = useSelector((store) => store.cart.itemsadded);
+  console.log("cartItems: ", cartItems);
+  console.log("cItems: ", cItems);
   const totalAmount = cartItems.reduce(
     (acc, cur) => cur.pricePerPiece * cur.quantity + acc,
     0
@@ -21,9 +24,11 @@ const Cart = () => {
     orderDateTime: new Date().toISOString(),
 
     totalAmount: totalAmount,
-    paymentStatus: "Paid",
+    paymentStatus: "Pending",
     deliveryStatus: "Pending",
-    orderDetails: [
+    orderDetails: [...cItems],
+
+    /* [
       {
         itemId: 1,
         size: "M",
@@ -36,7 +41,7 @@ const Cart = () => {
         quantity: 1,
         pricePerPiece: 100.0,
       },
-    ],
+    ], */
   });
 
   const clearCartHandler = () => {
