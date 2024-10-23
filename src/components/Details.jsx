@@ -22,7 +22,7 @@ const Details = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("http://localhost:5122/pizzas/customer/1011");
+    const data = await fetch("http://localhost:5122/pizzas/customer/1001");
     const json = await data.json();
     console.log(json);
     dispatch(clearCustomerDetails());
@@ -39,8 +39,8 @@ const Details = () => {
 
   return (
     <div className="w-full px-2 flex flex-col-reverse">
-      {allOrder.map((o, index) => (
-        <OrderDetail {...o} key={index} />
+      {allOrder.map((o) => (
+        <OrderDetail {...o} key={o.orderId} />
       ))}
     </div>
   );

@@ -20,7 +20,7 @@ const Cart = () => {
   console.log("orderdetails: ", orderdetails);
 
   const newOrder = {
-    customerId: 1011, // Example customer ID
+    customerId: 1001, // Example customer ID
     orderDateTime: new Date().toISOString(),
 
     totalAmount: totalAmount,
@@ -129,7 +129,7 @@ const Cart = () => {
           onClick={orderHandler}
           className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
         >
-          <Link to="/orderdetails">Send Order</Link>
+          <Link to="/orderreceived">Send Order</Link>
         </button>
       </div>
     </div>

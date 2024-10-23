@@ -11,6 +11,7 @@ import Order from "./components/Order.jsx";
 import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer.jsx";
 import Details from "./components/Details.jsx";
+import OrderReceived from "./components/OrderReceived.jsx";
 
 const About = lazy(() => import("./components/About.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"));
@@ -56,6 +57,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/orderdetails",
         element: <Details />,
+      },
+      {
+        path: "/orderreceived",
+        element: <OrderReceived />,
       },
     ],
   },

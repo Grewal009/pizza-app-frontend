@@ -16,7 +16,15 @@ const OrderDetail = (props) => {
     orderDetails,
   } = props;
 
-  const dateTime = new Date(orderDateTime).toLocaleString();
+  const dateTime = new Date(orderDateTime).toLocaleString("no-NO", {
+    year: "numeric",
+    month: "long", // 'long' for full month names, or '2-digit'/'numeric' for numbers
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false, // Use 24-hour clock format
+  });
 
   /*   let totalAmount;
   if (order) {
