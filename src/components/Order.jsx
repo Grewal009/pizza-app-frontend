@@ -52,7 +52,7 @@ const Order = () => {
     const res = menu.menus.filter((m) => m.size == size1);
     console.log("log: ", res);
     const alreadyAdded = cartItems.filter(
-      (i) => i.s == size1 && i.itemId == menu.id
+      (i) => i.size == size1 && i.itemId == menu.id
     );
     console.log("alreadyAdded: ", alreadyAdded);
     const index = cartItems.indexOf(alreadyAdded[0]);
@@ -89,7 +89,9 @@ const Order = () => {
     const res = menu.menus.filter((m) => m.size == size1);
     console.log("log: ", res);
 
-    const alreadyAdded = od.filter((i) => i.s == size1 && i.itemId == menu.id);
+    const alreadyAdded = od.filter(
+      (i) => i.size == size1 && i.itemId == menu.id
+    );
     console.log("alreadyAdded: ", alreadyAdded);
     /* const alreadyAddedOtherItem = od.filter(
       (i) => i.s == size && i.itemId != menu.id
@@ -100,10 +102,15 @@ const Order = () => {
     } else */
 
     if (alreadyAdded.length != 0) {
-      alreadyAdded[0].q += quantity1;
+      alreadyAdded[0].quantity += quantity1;
       console.log("log11");
     } else {
-      od.push({ itemId: menu.id, s: size1, q: quantity1, p: res[0].price });
+      od.push({
+        itemId: menu.id,
+        size: size1,
+        quantity: quantity1,
+        pricePerPiece: res[0].price,
+      });
       //setOrder(od);
     }
 

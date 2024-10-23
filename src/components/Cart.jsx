@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import { addOrder } from "../utils/orderSlice";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 const Cart = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.itemsadded);
   //const cItems = useSelector((store) => store.cart.itemsadded);
   console.log("cartItems: ", cartItems);
@@ -15,11 +15,11 @@ const Cart = () => {
     (acc, cur) => cur.pricePerPiece * cur.quantity + acc,
     0
   );
-  const dispatch = useDispatch();
+
   const orderdetails = useSelector((store) => store.order.orderItems);
   console.log("orderdetails: ", orderdetails);
 
-  const [newOrder] = useState({
+  const newOrder = {
     customerId: 1011, // Example customer ID
     orderDateTime: new Date().toISOString(),
 
@@ -42,7 +42,7 @@ const Cart = () => {
         pricePerPiece: 100.0,
       },
     ], */
-  });
+  };
 
   const clearCartHandler = () => {
     dispatch(clearCart());
