@@ -14,15 +14,20 @@ const CartItem = (prop) => {
   const filterItem = orderItems.filter(
     (i) => i.itemId == itemId && i.size == size
   );
+  console.log("filterItem =>>>>> ", filterItem);
+
+  const index = orderItems.indexOf(filterItem[0]);
+  console.log("index ===>>>", index);
 
   console.log("filterItem: ", filterItem[0]?.itemId);
-  const itemInfo = items.filter((i) => i.id == filterItem[0]?.itemId);
-  console.log("itemInfo: ", itemInfo[0].name);
+  const itemInfo = items.filter((i) => i?.id == filterItem[0]?.itemId);
+  console.log("itemInfo ===>>>> ", itemInfo);
+  console.log("itemInfo: ", itemInfo[0]?.name);
 
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
-    dispatch(removeItem(filterItem[0]));
+    dispatch(removeItem(index));
   };
 
   const minusHandler = () => {
@@ -34,7 +39,7 @@ const CartItem = (prop) => {
 
   return (
     <tr className="hover:bg-gray-50">
-      <td className="border px-8 py-4 text-left">{itemInfo[0].name}</td>
+      <td className="border px-8 py-4 text-left">{itemInfo[0]?.name}</td>
       <td className="border px-8 py-4 text-left">{size}</td>
 
       <td className="border px-8 py-4">{pricePerPiece}</td>
