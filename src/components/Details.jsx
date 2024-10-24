@@ -22,7 +22,7 @@ const Details = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("http://localhost:5122/pizzas/customer/1001");
+    const data = await fetch("http://localhost:5122/pizzas/customer/1000");
     const json = await data.json();
     console.log(json);
     dispatch(clearCustomerDetails());

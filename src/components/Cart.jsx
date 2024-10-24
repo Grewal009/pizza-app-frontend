@@ -20,7 +20,7 @@ const Cart = () => {
   console.log("orderdetails: ", orderdetails);
 
   const newOrder = {
-    customerId: 1001, // Example customer ID
+    customerId: 1000, // Example customer ID
     orderDateTime: new Date().toISOString(),
 
     totalAmount: totalAmount,
