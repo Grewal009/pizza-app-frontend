@@ -234,6 +234,263 @@ export let items = [
       },
     ],
   },
+  {
+    id: 10,
+    name: "Rio Grande",
+    image: "https://www.peppes.no/bilder_webshop/0117.jpg",
+    ingredients:
+      "Taco-spiced minced meat with salsa, jalapeños, peppers and nachips. Topped with lime zest.",
+    allergens: "Wheat, Gluten, Milk",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 80.0,
+      },
+      {
+        size: "medium",
+        price: 180.0,
+      },
+      {
+        size: "large",
+        price: 350.0,
+      },
+    ],
+  },
+  {
+    id: 11,
+    name: "Peppe's Cream Dressing",
+    image: "https://www.peppes.no/bilder_webshop/2201.jpg",
+    ingredients: "",
+    allergens: "Milk",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Pepper's Hot Sauce",
+    image: "https://www.peppes.no/bilder_webshop/2220.jpg",
+    ingredients: "",
+    allergens: "Sulphite, Milk",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Peppe's Guacamole",
+    image: "https://www.peppes.no/bilder_webshop/2204.jpg",
+    ingredients: "Guacamole",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "Pepper salsa sauce",
+    image: "https://www.peppes.no/bilder_webshop/2202.jpg",
+    ingredients: "Pepper salsa sauce",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Aioli",
+    image: "https://www.peppes.no/bilder_webshop/2200.jpg",
+    ingredients: "",
+    allergens: "Mustard",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 16,
+    name: "Coca-Cola",
+    image: "https://www.peppes.no/bilder_webshop/7170.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 17,
+    name: "Coca-Cola Zero",
+    image: "https://www.peppes.no/bilder_webshop/7186.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 18,
+    name: "Fanta",
+    image: "https://www.peppes.no/bilder_webshop/7176.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 19,
+    name: "Fanta Zero",
+    image: "https://www.peppes.no/bilder_webshop/7335.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 20,
+    name: "Spirit",
+    image: "https://www.peppes.no/bilder_webshop/7173.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 21,
+    name: "Urge",
+    image: "https://www.peppes.no/bilder_webshop/7178.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
 ];
 
 // let pizzaItems1 = [
@@ -500,6 +757,198 @@ export let items = [
 //       "glutenFree": true
 //   }
 // ]};
+
+let otherItems = [
+  {
+    id: 11,
+    name: "Peppe's Cream Dressing",
+    image: "https://www.peppes.no/bilder_webshop/2201.jpg",
+    ingredients: "",
+    allergens: "Milk",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Pepper's Hot Sauce",
+    image: "https://www.peppes.no/bilder_webshop/2220.jpg",
+    ingredients: "",
+    allergens: "Sulphite, Milk",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Peppe's Guacamole",
+    image: "https://www.peppes.no/bilder_webshop/2204.jpg",
+    ingredients: "Guacamole",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "Pepper salsa sauce",
+    image: "https://www.peppes.no/bilder_webshop/2202.jpg",
+    ingredients: "Pepper salsa sauce",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Aioli",
+    image: "https://www.peppes.no/bilder_webshop/2200.jpg",
+    ingredients: "",
+    allergens: "Mustard",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: false,
+    isdressing: true,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "medium",
+        price: 40.0,
+      },
+    ],
+  },
+  {
+    id: 16,
+    name: "Coca-Cola",
+    image: "https://www.peppes.no/bilder_webshop/7170.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 17,
+    name: "Coca-Cola Zero",
+    image: "https://www.peppes.no/bilder_webshop/7186.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 18,
+    name: "Fanta",
+    image: "https://www.peppes.no/bilder_webshop/7176.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+  {
+    id: 19,
+    name: "Fanta Zero",
+    image: "https://www.peppes.no/bilder_webshop/7335.jpg",
+    ingredients: "",
+    allergens: "",
+    isvegetarian: false,
+    isglutenFree: false,
+    isdrink: true,
+    isdressing: false,
+    menus: [
+      {
+        size: "small",
+        price: 25.0,
+      },
+      {
+        size: "large",
+        price: 50.0,
+      },
+    ],
+  },
+];
 
 export let userLogin = {
   name: null,

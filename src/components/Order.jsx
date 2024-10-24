@@ -133,22 +133,30 @@ const Order = () => {
         <div className="w-[700px]">
           <h1 className="text-5xl font-bold text-gray-700 pb-3">{menu.name}</h1>
 
-          <div className="flex gap-4 text-xl text-gray-700 leading-6 pb-1 text-justify">
-            <p>
-              <b>ingredients:</b>
-            </p>
-            <p>{menu.ingredients}</p>
-          </div>
-          <div className="flex gap-8 text-xl text-gray-700 leading-6 pb-1 text-justify">
-            <p className="w-24">
-              <b>allergens:</b>
-            </p>
-            <p>{menu.allergens}</p>
-          </div>
+          {menu?.ingredients == undefined || menu?.ingredients == "" ? (
+            ""
+          ) : (
+            <div className="flex gap-4 text-xl text-gray-700 leading-6 pb-1 text-justify">
+              <p>
+                <b>ingredients:</b>
+              </p>
+              <p>{menu?.ingredients}</p>
+            </div>
+          )}
+          {menu?.allergens == undefined || menu?.allergens == "" ? (
+            ""
+          ) : (
+            <div className="flex gap-8 text-xl text-gray-700 leading-6 pb-1 text-justify">
+              <p className="w-24">
+                <b>allergens:</b>
+              </p>
+              <p>{menu?.allergens}</p>
+            </div>
+          )}
 
           <div className="flex justify-between">
             <div>
-              <label className="w-auto">Select your pizza</label>
+              <label className="w-auto">Select your choice</label>
               <select
                 onChange={(e) => {
                   setSize1(e.target.value);
