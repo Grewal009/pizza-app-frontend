@@ -12,6 +12,7 @@ import { lazy, Suspense } from "react";
 import Shimmer from "./components/Shimmer.jsx";
 import Details from "./components/Details.jsx";
 import OrderReceived from "./components/OrderReceived.jsx";
+import Signup from "./components/Signup.jsx";
 
 const About = lazy(() => import("./components/About.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"));
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
       {
         path: "/order/:id",

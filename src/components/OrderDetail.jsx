@@ -45,7 +45,7 @@ const OrderDetail = (props) => {
         <h3>Delivery Status: {deliveryStatus}</h3>
       </div>
       <div className="w-auto flex justify-center my-10">
-        <table className="shadow-lg bg-white border-collapse text-center">
+        <table className="shadow-lg w-3/4 bg-white border-collapse text-center">
           <thead>
             <tr className="">
               <th className="bg-slate-200 border text-left px-8 py-4">ITEM</th>
