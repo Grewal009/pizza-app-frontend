@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
-  const [token, setToken] = useState("");
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Login = () => {
   console.log("customers:: ", customers?.[0]);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let correctId = 0;
 
   useEffect(() => {
     fetchData();
@@ -31,33 +32,6 @@ const Login = () => {
     console.log(json);
 
     dispatch(addCustomerInfo(json));
-  };
-
-  const apiRequest = async () => {
-    try {
-      const response = await fetch("http://localhost:5122/pizzas/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customerName: "sam",
-          email: email,
-          password: password,
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setToken(data.token);
-        localStorage.setItem("jwtToken", data.token); // Store token securely
-        console.log("login successful");
-        dispatch(addUser({ email: email, token: token }));
-        navigate("/");
-      } else {
-        console.log("login failed");
-      }
-    } catch (error) {
-      console.log("An error occurred:", error);
-    }
   };
 
   const signupHandler = async (e) => {
@@ -83,6 +57,9 @@ const Login = () => {
     } else {
       let correctEmail = correctUser[0].email;
       let correctPassword = correctUser[0].password;
+      correctId = correctUser[0].customerId;
+      console.log("cusId: ", correctId, correctEmail);
+
       if (correctEmail == email && correctPassword == password) {
         apiRequest();
       } else {
@@ -92,6 +69,32 @@ const Login = () => {
 
     setError(newError);
     console.log("error ==>> ", error);
+  };
+
+  const apiRequest = async () => {
+    try {
+      const response = await fetch("http://localhost:5122/pizzas/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: "sam",
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("jwtToken", data.token); // Store token securely
+        console.log("login successful");
+        dispatch(addUser({ id: correctId, email: email, token: data.token }));
+        navigate("/");
+      } else {
+        console.log("login failed");
+      }
+    } catch (error) {
+      console.log("An error occurred:", error);
+    }
   };
 
   return (

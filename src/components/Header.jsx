@@ -4,6 +4,7 @@ import { userLogin } from "../utils/constants.js";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../utils/userSlice.js";
+import { clearCustomerDetails } from "../utils/customerSlice.js";
 
 const Header = () => {
   //const [login, setLogin] = useState(userLogin.login);
@@ -57,6 +58,7 @@ const Header = () => {
               className="w-24 h-10  bg-red-500 text-xl font-semibold rounded-lg hover:border-4 hover:border-red-600 hover:font-bold shadow-inner "
               onClick={() => {
                 dispatch(clearUser());
+                dispatch(clearCustomerDetails());
                 localStorage.removeItem("jwtToken");
               }}
             >
