@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.itemsadded);
+
   //const cItems = useSelector((store) => store.cart.itemsadded);
   console.log("cartItems: ", cartItems);
   //console.log("cItems: ", cItems);
@@ -15,6 +16,8 @@ const Cart = () => {
     (acc, cur) => cur.pricePerPiece * cur.quantity + acc,
     0
   );
+
+  const user = useSelector((store) => store.user.loggedInUser);
 
   const orderdetails = useSelector((store) => store.order.orderItems);
   console.log("orderdetails: ", orderdetails);
@@ -125,13 +128,24 @@ const Cart = () => {
         >
           Clear Cart
         </button>
-        <button
-          onClick={orderHandler}
-          className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
-        >
-          <Link to="/orderreceived">Send Order</Link>
-        </button>
+        {user.length == 0 ? (
+          <button className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold">
+            <Link to="/login">Sign in</Link>
+          </button>
+        ) : (
+          <button
+            onClick={orderHandler}
+            className="w-32 h-10  bg-green-600 text-slate-100 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
+          >
+            <Link to="/orderreceived">Send Order</Link>
+          </button>
+        )}
       </div>
+      {user.length == 0 ? (
+        <p className="text-center my-2">(Sign in required to place order)</p>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
