@@ -62,7 +62,7 @@ const Header = () => {
                 localStorage.removeItem("jwtToken");
               }}
             >
-              <Link to="/">Logout</Link>
+              <Link to="/">Sign out</Link>
             </button>
           ) : (
             <button
@@ -72,7 +72,7 @@ const Header = () => {
                 userLogin.login = !login;
               }} */
             >
-              <Link to="/login">Login</Link>
+              <Link to="/login">Sign in</Link>
             </button>
           )}
         </div>
