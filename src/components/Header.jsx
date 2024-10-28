@@ -1,11 +1,12 @@
-import { useState } from "react";
+//import { useState } from "react";
 import { LOGO_URL } from "../utils/constants.js";
 import { userLogin } from "../utils/constants.js";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../utils/userSlice.js";
 
 const Header = () => {
-  const [login, setLogin] = useState(userLogin.login);
+  //const [login, setLogin] = useState(userLogin.login);
   const cartItems = useSelector((store) => store.cart.itemsadded);
   console.log("cartItems: ", cartItems);
   let totalQuantity = 0;
@@ -13,8 +14,11 @@ const Header = () => {
     totalQuantity = cartItems.reduce((acc, cur) => acc + cur.quantity, 0);
   }
 
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.user.loggedInUser);
+
   console.log(userLogin);
-  console.log(login);
+  //console.log(login);
 
   return (
     <>
@@ -39,17 +43,21 @@ const Header = () => {
             </Link>
           </li>
 
-          <li className="flex cursor-pointer w-44 mx-5 hover:font-extrabold hover:text-[26px] text-center">
-            <Link to="/orderdetails">Order Details</Link>
-          </li>
+          {user.length != 0 ? (
+            <li className="flex cursor-pointer w-44 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+              <Link to="/orderdetails">Order Details</Link>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
         <div className="flex">
-          {login ? (
+          {user.length != 0 ? (
             <button
               className="w-24 h-10  bg-red-500 text-xl font-semibold rounded-lg hover:border-4 hover:border-red-600 hover:font-bold shadow-inner "
               onClick={() => {
-                setLogin(!login);
-                userLogin.login = !login;
+                dispatch(clearUser());
+                localStorage.removeItem("jwtToken");
               }}
             >
               <Link to="/">Logout</Link>
@@ -57,10 +65,10 @@ const Header = () => {
           ) : (
             <button
               className="w-24 h-10  bg-green-600 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
-              onClick={() => {
+              /* onClick={() => {
                 setLogin(!login);
                 userLogin.login = !login;
-              }}
+              }} */
             >
               <Link to="/login">Login</Link>
             </button>

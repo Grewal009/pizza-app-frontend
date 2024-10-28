@@ -3,56 +3,97 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearCustomerInfo, addCustomerInfo } from "../utils/customersSlice";
-import Signup from "./Signup";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
+  const [token, setToken] = useState("");
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const customers = useSelector((store) => store.customers.customerInfo);
-  console.log("customers: ", customers?.[0]);
+  console.log("customers:: ", customers?.[0]);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const newError = {};
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
+    dispatch(clearCustomerInfo());
     const data = await fetch("http://localhost:5122/pizzas/customer");
     const json = await data.json();
     console.log(json);
-    dispatch(clearCustomerInfo());
+
     dispatch(addCustomerInfo(json));
   };
 
-  const signupHandler = (e) => {
+  const apiRequest = async () => {
+    try {
+      const response = await fetch("http://localhost:5122/pizzas/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: "sam",
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setToken(data.token);
+        localStorage.setItem("jwtToken", data.token); // Store token securely
+        console.log("login successful");
+        dispatch(addUser({ email: email, token: token }));
+        navigate("/");
+      } else {
+        console.log("login failed");
+      }
+    } catch (error) {
+      console.log("An error occurred:", error);
+    }
+  };
+
+  const signupHandler = async (e) => {
     e.preventDefault();
+    const newError = {};
 
     if (email == "") {
       newError.email = "email required";
     } else if (!emailRegex.test(email)) {
       newError.email = "enter valid email";
       console.log("enter valid email");
-    } else {
-      console.log("email valid");
-      let alreadyRegistered = customers?.[0].filter((c) => c.email == email);
-      if (alreadyRegistered?.length != 0) {
-        console.log("email already registered");
-        newError.email = "email already registered";
-      }
     }
 
     if (password == "") {
       newError.password = "password required";
     }
+
+    const correctUser = customers[0].filter((c) => c.email == email);
+    console.log("correctUser ==>> ", correctUser);
+
+    if (correctUser?.length == 0) {
+      newError.password = "wrong email & password";
+    } else {
+      let correctEmail = correctUser[0].email;
+      let correctPassword = correctUser[0].password;
+      if (correctEmail == email && correctPassword == password) {
+        apiRequest();
+      } else {
+        newError.password = "wrong email & password";
+      }
+    }
+
     setError(newError);
+    console.log("error ==>> ", error);
   };
-  console.log("error ==>> ", error);
+
   return (
     <div className="absolute w-full min-h-60 h-3/4 px-2 flex justify-center ">
       <div className="flex flex-col items-center justify-center flex-nowrap overflow-x-scroll ">
