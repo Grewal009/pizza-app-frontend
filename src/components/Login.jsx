@@ -77,7 +77,7 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customerName: "sam",
+          customerName: "dummy",
           email: email,
           password: password,
         }),
@@ -99,7 +99,7 @@ const Login = () => {
 
   return (
     <div className="absolute w-full min-h-60 h-3/4 px-2 flex justify-center ">
-      <div className="flex flex-col items-center justify-center flex-nowrap overflow-x-scroll ">
+      <div className="w-80 flex flex-col items-center justify-center flex-nowrap overflow-x-scroll ">
         <input
           value={email}
           onChange={(e) => {

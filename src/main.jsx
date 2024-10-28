@@ -13,6 +13,8 @@ import Shimmer from "./components/Shimmer.jsx";
 import Details from "./components/Details.jsx";
 import OrderReceived from "./components/OrderReceived.jsx";
 import Signup from "./components/Signup.jsx";
+import NewAccount from "./components/NewAccount.jsx";
+import AdminSignin from "./components/AdminSignin.jsx";
 
 const About = lazy(() => import("./components/About.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"));
@@ -66,6 +68,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/orderreceived",
         element: <OrderReceived />,
+      },
+      {
+        path: "/newAccount",
+        element: <NewAccount />,
+      },
+      {
+        path: "/adminsignin",
+        element: <AdminSignin />,
       },
     ],
   },
