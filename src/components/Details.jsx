@@ -16,7 +16,7 @@ const Details = () => {
   console.log("customerId ==>> ", customerId);
 
   if (customerId == undefined) {
-    return <h3>No order found!!!!!!</h3>;
+    return <h3 className="text-center mt-5">No order found!!!</h3>;
   }
   /* const allOrder = useSelector((store) => store.order.orderItems);
   console.log("allOrder =>> ", allOrder);
@@ -41,7 +41,7 @@ const Details = () => {
   };
 
   if (customerdetail == undefined || allOrder == undefined) {
-    return <h3>No order found!!!!!!</h3>;
+    return <h3 className="text-center mt-5">No order found!!!</h3>;
   }
 
   /* if (allOrder.length == 0) {

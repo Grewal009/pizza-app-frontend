@@ -18,12 +18,14 @@ const Cart = () => {
   );
 
   const user = useSelector((store) => store.user.loggedInUser);
+  const id = user[0]?.id;
+  console.log("id ==>> ", id);
 
   const orderdetails = useSelector((store) => store.order.orderItems);
   console.log("orderdetails: ", orderdetails);
 
   const newOrder = {
-    customerId: 1000, // Example customer ID
+    customerId: id, // Example customer ID
     orderDateTime: new Date().toISOString(),
 
     totalAmount: totalAmount,
@@ -56,7 +58,10 @@ const Cart = () => {
     try {
       const response = await fetch("http://localhost:5122/pizzas/orders", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+        },
         body: JSON.stringify(newOrder),
       });
 
