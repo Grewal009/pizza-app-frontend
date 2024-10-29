@@ -6,8 +6,9 @@ import { clearCustomerInfo, addCustomerInfo } from "../utils/customersSlice";
 
 import { Link, useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice";
+import { addAdminOrder, clearAdminOrder } from "../utils/adminOrdersSlice";
 
-const Login = () => {
+const AdminSignin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
@@ -23,6 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     fetchData();
+    fetchOrders();
   }, []);
 
   const fetchData = async () => {
@@ -30,8 +32,15 @@ const Login = () => {
     const data = await fetch("http://localhost:5122/pizzas/customer");
     const json = await data.json();
     console.log(json);
-
     dispatch(addCustomerInfo(json));
+  };
+
+  const fetchOrders = async () => {
+    dispatch(clearAdminOrder());
+    const data = await fetch("http://localhost:5122/pizzas/orders");
+    const json = await data.json();
+    console.log(json);
+    dispatch(addAdminOrder(json));
   };
 
   const signupHandler = async (e) => {
@@ -77,7 +86,7 @@ const Login = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customerName: "dummy",
+          customerName: "admin",
           email: email,
           password: password,
         }),
@@ -88,7 +97,7 @@ const Login = () => {
         localStorage.setItem("jwtToken", data.token); // Store token securely
         console.log("login successful");
         dispatch(addUser({ id: correctId, email: email, token: data.token }));
-        navigate("/");
+        navigate("/adminpanel");
       } else {
         console.log("login failed");
       }
@@ -99,7 +108,7 @@ const Login = () => {
 
   return (
     <div className="absolute w-full min-h-60 h-3/4 px-2 flex justify-center ">
-      <div className="w-80 flex flex-col items-center justify-center flex-nowrap  ">
+      <div className="w-80 flex flex-col items-center justify-center flex-nowrap ">
         <input
           value={email}
           onChange={(e) => {
@@ -136,12 +145,9 @@ const Login = () => {
             Sig in
           </button>
         </div>
-        <p className="text-sm text-blue-600 mt-2">
-          <Link to="/signup">Create new account</Link>
-        </p>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default AdminSignin;

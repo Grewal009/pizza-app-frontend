@@ -15,6 +15,7 @@ import OrderReceived from "./components/OrderReceived.jsx";
 import Signup from "./components/Signup.jsx";
 import NewAccount from "./components/NewAccount.jsx";
 import AdminSignin from "./components/AdminSignin.jsx";
+import AdminPanel from "./components/AdminPanel.jsx";
 
 const About = lazy(() => import("./components/About.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"));
@@ -76,6 +77,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/adminsignin",
         element: <AdminSignin />,
+      },
+      {
+        path: "/adminpanel",
+        element: <AdminPanel />,
       },
     ],
   },
