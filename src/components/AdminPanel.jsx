@@ -4,7 +4,10 @@ import AdminPanelOrder from "./AdminPanelOrder";
 
 const AdminPanel = () => {
   const orders = useSelector((store) => store.orderAdmin.orderItems);
-  console.log("orders ==>> ", orders);
+  console.log("orders :==>> ", orders);
+  if (orders?.length == 0) {
+    return;
+  }
 
   return (
     <div className="w-full  px-2">
