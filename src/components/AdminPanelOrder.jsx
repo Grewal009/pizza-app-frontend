@@ -38,7 +38,7 @@ const AdminPanelOrder = (prop) => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-            /*  Authorization: `Bearer ${localStorage.getItem("jwtToken")}`, */
+            Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
           },
           body: JSON.stringify(updatedOrder),
         }

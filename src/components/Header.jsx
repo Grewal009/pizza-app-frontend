@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../utils/userSlice.js";
 import { clearCustomerDetails } from "../utils/customerSlice.js";
+import { clearAdminOrder } from "../utils/adminOrdersSlice.js";
+import { IoCartOutline } from "react-icons/io5";
 
 const Header = () => {
   //const [login, setLogin] = useState(userLogin.login);
@@ -29,24 +31,30 @@ const Header = () => {
           <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
             <Link to="/">Home</Link>
           </li>
-          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+
+          <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center ">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="flex cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
-            <Link to="/cart">
-              Cart
-              <label className="ml-1 px-2 bg-orange-700 text-white rounded-xl text-center">
+          <li className="flex cursor-pointer w-16 mx-5 hover:font-bold hover:text-[26px] text-center">
+            <Link to="/cart" className="flex justify-center items-center">
+              <IoCartOutline size={45} className="text-lg hover:text-2xl" />
+              <label className="-ml-2 px-2 bg-orange-700 text-white rounded-full text-center">
                 {totalQuantity}
               </label>
             </Link>
           </li>
 
           {user.length != 0 ? (
-            <li className="flex cursor-pointer w-44 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+            <li className="flex cursor-pointer w-[165px] ml-5  hover:font-extrabold hover:text-[26px] text-center">
               <Link to="/orderdetails">Order Details</Link>
+            </li>
+          ) : (
+            ""
+          )}
+
+          {user?.[0]?.email == "admin@pizzas.no" ? (
+            <li className="flex cursor-pointer w-40 mx-5 hover:font-extrabold hover:text-[26px] text-center">
+              <Link to="/adminpanel">Admin Panel</Link>
             </li>
           ) : (
             ""
@@ -59,6 +67,7 @@ const Header = () => {
               onClick={() => {
                 dispatch(clearUser());
                 dispatch(clearCustomerDetails());
+                dispatch(clearAdminOrder());
                 localStorage.removeItem("jwtToken");
               }}
             >

@@ -3,15 +3,18 @@ import { IoNotifications } from "react-icons/io5";
 import AdminPanelOrder from "./AdminPanelOrder";
 
 const AdminPanel = () => {
-  const orders = useSelector((store) => store.orderAdmin.orderItems);
-  console.log("orders :==>> ", orders);
-  if (orders?.length == 0) {
-    return;
+  const user = useSelector((store) => store.user.loggedInUser);
+  console.log("user ==>> ", user);
+  if (user.length == 0 || user?.[0]?.email != "admin@pizzas.no") {
+    return <h3 className="text-center mt-5">No order found!!!</h3>;
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const orders = useSelector((store) => store.orderAdmin.orderItems);
+  console.log("orders :==>> ", orders);
+
   return (
-    <div className="w-full  px-2">
-      <h2 className="font-bold text-xl text-gray-700">Admin Panel</h2>
+    <div className="w-full  px-2 py-5">
       <div>
         <div className="flex justify-center gap-5 ">
           <div className="">
