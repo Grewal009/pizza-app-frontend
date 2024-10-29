@@ -65,7 +65,6 @@ const AdminPanel = () => {
                 <th className="bg-slate-200 border text-center px-4 py-2">
                   Delivery Status
                 </th>
-                <th className="bg-slate-200 border text-center px-4 py-2"></th>
               </tr>
             </thead>
             <tbody className=" flex-col-reverse">
