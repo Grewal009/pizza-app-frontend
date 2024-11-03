@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="w-full h-20 bg-yellow-200 ">
-      <div className="flex h-full justify-evenly items-center text-lg font-semibold text-gray-700 ">
+    <div className="w-full h-20 bg-yellow-300 ">
+      <div className="flex h-full justify-evenly items-center text-lg font-semibold text-red-600 ">
         <Link to="/" className="cursor-pointer w-20 hover:font-bold">
           Home
         </Link>

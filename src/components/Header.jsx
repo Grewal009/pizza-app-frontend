@@ -25,9 +25,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-yellow-200 w-full h-20 flex justify-between px-5 items-center">
+      <div className="bg-yellow-300 w-full h-20 flex justify-between px-5 items-center">
         <img src={LOGO_URL} className="w-14 h-12" />
-        <ul className="flex items-center text-2xl font-bold text-orange-700">
+        <ul className="flex items-center text-2xl font-bold text-red-600">
           <li className="cursor-pointer w-20 mx-5 hover:font-extrabold hover:text-[26px] text-center">
             <Link to="/">Home</Link>
           </li>
@@ -38,7 +38,7 @@ const Header = () => {
           <li className="flex cursor-pointer w-16 mx-5 hover:font-bold hover:text-[26px] text-center">
             <Link to="/cart" className="flex justify-center items-center">
               <IoCartOutline size={45} className="text-lg hover:text-2xl" />
-              <label className="-ml-2 px-2 bg-orange-700 text-white rounded-full text-center">
+              <label className="-ml-2 px-2 bg-red-600 text-white rounded-full text-center">
                 {totalQuantity}
               </label>
             </Link>
@@ -63,7 +63,7 @@ const Header = () => {
         <div className="flex">
           {user.length != 0 ? (
             <button
-              className="w-24 h-10  bg-red-500 text-xl font-semibold rounded-lg hover:border-4 hover:border-red-600 hover:font-bold shadow-inner "
+              className="w-24 h-10  bg-red-500 text-white text-xl font-semibold rounded-lg hover:border-4 hover:border-red-600 hover:font-bold shadow-inner "
               onClick={() => {
                 dispatch(clearUser());
                 dispatch(clearCustomerDetails());
@@ -75,7 +75,7 @@ const Header = () => {
             </button>
           ) : (
             <button
-              className="w-24 h-10  bg-green-600 text-xl font-semibold rounded-lg hover:border-4 hover:border-green-700 hover:font-bold"
+              className="w-24 h-10  bg-green-600 text-xl font-semibold rounded-lg text-white hover:border-4 hover:border-green-700 hover:font-bold"
               /* onClick={() => {
                 setLogin(!login);
                 userLogin.login = !login;
