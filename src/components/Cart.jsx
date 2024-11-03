@@ -29,8 +29,8 @@ const Cart = () => {
     orderDateTime: new Date().toISOString(),
 
     totalAmount: totalAmount,
-    paymentStatus: "Pending",
-    deliveryStatus: "Pending",
+    paymentStatus: "pending",
+    deliveryStatus: "pending",
     orderDetails: [...cartItems],
 
     /* [

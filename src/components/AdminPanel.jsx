@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { IoNotifications } from "react-icons/io5";
 import AdminPanelOrder from "./AdminPanelOrder";
+import { useState } from "react";
 
 const AdminPanel = () => {
+  const [count, setCount] = useState(0);
   const user = useSelector((store) => store.user.loggedInUser);
   console.log("user ==>> ", user);
   if (user.length == 0 || user?.[0]?.email != "admin@pizzas.no") {
@@ -12,22 +14,45 @@ const AdminPanel = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const orders = useSelector((store) => store.orderAdmin.orderItems);
   console.log("orders :==>> ", orders);
+  let allOrders = [];
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+
+  allOrders = orders[0].filter(
+    (o) =>
+      o.paymentStatus.toLowerCase() == "pending" ||
+      o.deliveryStatus.toLowerCase() == "pending"
+  );
+
+  console.log("allOrders ==>> ", allOrders);
 
   return (
     <div className="w-full  px-2 py-5">
       <div>
         <div className="flex justify-center gap-5 ">
           <div className="">
-            <IoNotifications
-              size={25}
-              className="relative top-0 left-28 text-red-600"
-            />
+            {allOrders.length != 0 ? (
+              <IoNotifications
+                size={25}
+                className="relative top-0 left-28 text-red-600"
+              />
+            ) : (
+              <IoNotifications
+                size={25}
+                className="relative top-0 left-28 text-red-600 invisible"
+              />
+            )}
 
-            <button className="min-w-64 w-auto  h-10  bg-slate-500 text-slate-100 text-lg font-medium rounded-lg hover:bg-slate-600 hover:font-semibold z-20">
-              New Order Received <span className="font-bold">10</span>
+            <button
+              onClick={() => setCount(count + 1)}
+              className="min-w-64 w-auto  h-10  bg-slate-500 text-slate-100 text-lg font-medium rounded-lg hover:bg-slate-600 hover:font-semibold z-20"
+            >
+              New Order Received{" "}
+              <span className="font-bold">
+                {allOrders.length != 0 ? allOrders.length : ""}
+              </span>
             </button>
           </div>
-          <div>
+          {/*  <div>
             <IoNotifications
               size={25}
               className="relative top-0 left-28 text-red-600"
@@ -45,7 +70,7 @@ const AdminPanel = () => {
             <button className="min-w-64 w-auto h-10  bg-slate-500 text-slate-100 text-lg font-medium rounded-lg  hover:bg-slate-600 hover:font-semibold">
               Pending Delivery
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="w-auto flex justify-center my-10">
@@ -74,9 +99,15 @@ const AdminPanel = () => {
               </tr>
             </thead>
             <tbody className=" flex-col-reverse">
-              {orders?.[0]?.map((i) => (
-                <AdminPanelOrder {...i} key={i.orderId} />
-              ))}
+              {allOrders.length != 0 ? (
+                allOrders.map((i) => <AdminPanelOrder {...i} key={i.orderId} />)
+              ) : (
+                <tr className="text-center">
+                  <td className="text-center" colSpan={6}>
+                    No New Order Received!
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
