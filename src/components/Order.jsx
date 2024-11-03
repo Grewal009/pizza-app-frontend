@@ -11,6 +11,7 @@ import { addItem, updateItem } from "../utils/cartSlice";
 import { useSelector } from "react-redux";
 
 const Order = () => {
+  const [error, setError] = useState({});
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.itemsadded);
   const { id } = useParams();
@@ -46,7 +47,16 @@ const Order = () => {
   };
 
   const handleAddItem = () => {
-    if (size1 == "" || quantity1 == 0) {
+    const newError = {};
+    if (size1 == "") {
+      newError.size = "select item";
+    }
+    if (quantity1 == 0) {
+      newError.quantity = "select quantity";
+    }
+    setError(newError);
+    if (Object.keys(newError).length != 0) {
+      console.log("newError ==>> ", newError);
       return;
     }
     const res = menu.menus.filter((m) => m.size == size1);
@@ -66,7 +76,7 @@ const Order = () => {
           itemId: menu.id,
           size: size1,
           quantity: quantity1,
-          pricePerPiece: res[0].price,
+          pricePerPiece: res[0]?.price,
         })
       );
     } else {
@@ -75,48 +85,12 @@ const Order = () => {
           itemId: menu.id,
           size: size1,
           quantity: quantity1,
-          pricePerPiece: res[0].price,
+          pricePerPiece: res[0]?.price,
         })
       );
     }
     setQuantity1(0);
-  };
-
-  const addTocart = () => {
-    if (size1 == "" || quantity1 == 0) {
-      return;
-    }
-    const res = menu.menus.filter((m) => m.size == size1);
-    console.log("log: ", res);
-
-    const alreadyAdded = od.filter(
-      (i) => i.size == size1 && i.itemId == menu.id
-    );
-    console.log("alreadyAdded: ", alreadyAdded);
-    /* const alreadyAddedOtherItem = od.filter(
-      (i) => i.s == size && i.itemId != menu.id
-    ); */
-    /* if (od.length == 0) {
-      od.push({ itemId: menu.id, s: size, q: quantity, p: res[0].price });
-      setOrder(od);
-    } else */
-
-    if (alreadyAdded.length != 0) {
-      alreadyAdded[0].quantity += quantity1;
-      console.log("log11");
-    } else {
-      od.push({
-        itemId: menu.id,
-        size: size1,
-        quantity: quantity1,
-        pricePerPiece: res[0].price,
-      });
-      //setOrder(od);
-    }
-
-    //console.log("order: ", order);
-    console.log("menu: ", menu);
-    setQuantity1(0);
+    setSize1("");
   };
 
   if (menu == null) {
@@ -124,19 +98,19 @@ const Order = () => {
   }
 
   return (
-    <div className="w-full  p-2">
-      <div className="p-5 flex justify-start gap-5">
+    <div className="w-full  ">
+      <div className="p-5 flex flex-col items-center gap-3">
         <img
           src={menu.image}
           className="w-[500px] h-80 object-cover rounded-3xl"
         />
         <div className="w-[700px]">
-          <h1 className="text-5xl font-bold text-gray-700 pb-3">{menu.name}</h1>
+          <h1 className="text-5xl font-bold text-gray-700 pb-2">{menu.name}</h1>
 
           {menu?.ingredients == undefined || menu?.ingredients == "" ? (
             ""
           ) : (
-            <div className="flex gap-4 text-xl text-gray-700 leading-6 pb-1 text-justify">
+            <div className="flex gap-4 text-xl text-gray-700 leading-6 text-justify">
               <p>
                 <b>ingredients:</b>
               </p>
@@ -146,7 +120,7 @@ const Order = () => {
           {menu?.allergens == undefined || menu?.allergens == "" ? (
             ""
           ) : (
-            <div className="flex gap-8 text-xl text-gray-700 leading-6 pb-1 text-justify">
+            <div className="flex gap-8 text-xl text-gray-700 leading-6 text-justify">
               <p className="w-24">
                 <b>allergens:</b>
               </p>
@@ -154,17 +128,17 @@ const Order = () => {
             </div>
           )}
 
-          <div className="flex justify-between">
+          <div className="flex justify-center mt-2">
             <div>
-              <label className="w-auto">Select your choice</label>
+              <label className="w-auto"></label>
               <select
+                value={size1}
                 onChange={(e) => {
                   setSize1(e.target.value);
-                  setQuantity1(0);
                 }}
-                className="mx-5 w-40"
+                className="mx-5 w-52 px-2 py-2 bg-yellow-200 text-center  rounded-xl hover:bg-yellow-300"
               >
-                <option value="">select any</option>
+                <option value="">Select your choice</option>
                 {menu.menus.map((m, index) => (
                   <option key={index} value={m.size}>
                     {m.size} {m.price} kr
@@ -173,25 +147,28 @@ const Order = () => {
               </select>
             </div>
 
-            <div className="flex">
+            <div className="flex ">
               <button
                 onClick={minus}
-                className="mx-5 w-10 font-bold bg-gray-400"
+                className="ml-8 w-10 h-10 text-xl font-bold bg-yellow-200 rounded-full flex justify-center items-center hover:bg-yellow-300"
               >
                 -
               </button>
-              <label className="w-20 bg-slate-200 text-center">
+              <label className="w-10 flex text-lg font-bold justify-center items-center">
                 {quantity1}
               </label>
               <button
                 onClick={plus}
-                className="mx-5 w-10 font-bold bg-gray-400"
+                className="mr-5 w-10 h-10 text-lg font-bold bg-yellow-200 rounded-full flex justify-center items-center hover:bg-yellow-300"
               >
                 +
               </button>
             </div>
 
-            <button onClick={handleAddItem} className="bg-slate-300">
+            <button
+              onClick={handleAddItem}
+              className="ml-8 bg-yellow-200 px-5 py-2 rounded-2xl hover:bg-yellow-300"
+            >
               Add to cart
             </button>
           </div>
