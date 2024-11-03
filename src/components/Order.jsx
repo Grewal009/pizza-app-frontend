@@ -172,6 +172,21 @@ const Order = () => {
               Add to cart
             </button>
           </div>
+          <div className="flex justify-around">
+            {!error.size ? (
+              <p className=" invisible text-sm -ml-20">select item</p>
+            ) : (
+              <p className=" text-red-500 text-sm -ml-20"> select item</p>
+            )}
+
+            {!error.quantity ? (
+              <p className=" invisible text-sm -ml-96">select quantity</p>
+            ) : (
+              <p className=" text-red-500 text-sm -ml-96">
+                &nbsp;select quantity{" "}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
