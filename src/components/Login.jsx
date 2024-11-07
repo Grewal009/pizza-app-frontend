@@ -133,7 +133,7 @@ const Login = () => {
             onClick={signupHandler}
             className=" w-60 px-8 py-3 mt-3 rounded-xl bg-blue-600 text-lg font-bold text-slate-100"
           >
-            Sig in
+            Sign in
           </button>
         </div>
         <p className="text-sm text-blue-600 mt-2">
